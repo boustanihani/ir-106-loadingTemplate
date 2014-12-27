@@ -1,0 +1,49 @@
+<template name="defaultLayout">
+  <h3>Default layout</h3>
+
+  <!--<pre>Router.configure( {loadingTemplate: 'loadingTemplate'} );</pre>-->
+
+  <pre>Router.plugin( 'loading', {loadingTemplate : 'loadingTemplate'} );</pre>
+
+  <nav>
+    <a href="/">Home</a>&nbsp;
+    <a href="/declarativeWaitOn">Declarative <strong>'waitOn:'</strong></a>&nbsp;
+    <a href="/declarativeSubscriptions">Declarative <strong>'subscriptions:'</strong></a>&nbsp;
+    <a href="/programmaticWait">Programmatic <strong>'this.wait()'</strong></a>&nbsp;
+    <a href="/programmaticSubscribe">Programmatic <strong>'this.subscribe()'</strong></a>&nbsp;
+    <a href="/programmaticSubscribeWait">Programmatic <strong>'this.subscribe().wait()'</strong></a>&nbsp;
+  </nav>
+
+  <br>
+  <div style="padding:1em;border:solid;">
+    {{> yield}}
+  </div>
+</template>
+
+<template name="loadingTemplate">
+  <h3>Loading template... (2 sec)</h3>
+</template>
+
+<template name="home">
+  <h3>Home</h3>
+</template>
+
+<template name="declarativeWaitOn">
+  <h3>waitOn: function() { return Meteor.subscribe('messages'); }</h3>
+</template>
+
+<template name="declarativeSubscriptions">
+  <h3>subscriptions: function() { return Meteor.subscribe('messages'); }</h3>
+</template>
+
+<template name="programmaticWait">
+  <h3>this.wait(Meteor.subscribe('messages'));</h3>
+</template>
+
+<template name="programmaticSubscribe">
+  <h3>this.subscribe('messages');</h3>
+</template>
+
+<template name="programmaticSubscribeWait">
+  <h3>this.subscribe('messages').wait();</h3>
+</template>
